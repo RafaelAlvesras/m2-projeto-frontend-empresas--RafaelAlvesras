@@ -1,0 +1,279 @@
+.divButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    width: 50%;
+    height: 100%;
+}
+
+.logoutButtonAdmin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    Width: 142px;
+    Height: 48px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    background-color: var(--color-white);
+    border: 1px solid var(--brand-color-1);
+    color: var(--brand-color-1);
+    cursor: pointer;
+}
+
+.logoutButtonAdmin:hover {
+    background-color: var(--brand-color-1);
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 60.625rem;
+    height: 85vh;
+    gap: 1rem;
+}
+
+.SectionSelectCompanie {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 3.25rem;
+}
+
+#selectCompanie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 18rem;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    text-align: center;
+    background: var(--brand-color-1);
+    color: var(--color-white);
+    border: 0.0625rem solid var(--brand-color-1);
+    -webkit-appearance: none;
+    background: var(--brand-color-1) url('../assets/img/Polygon\ 1.svg') 95% 50% no-repeat;
+}
+
+
+.createDepButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    Width: 142px;
+    Height: 48px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    background: var(--brand-color-1);
+    color: var(--color-white);
+    border: 0.0625rem solid var(--brand-color-1);
+    cursor: pointer;
+}
+
+.createDepButton:hover {
+    background: var(--color-white);
+    color: var(--brand-color-1);
+    border: 0.0625rem solid var(--brand-color-1);
+}
+
+.departmentSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 35vh;
+    margin-bottom: 2rem;
+}
+
+.depTitleAdd {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    height: 3.25rem;
+    margin-bottom: 2rem;
+}
+
+.depTitleAdd>h1 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+}
+
+.departmentList {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    overflow: auto;
+    background: #F8F8F8;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
+}
+
+.cardDep {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 22.375rem;
+    height: 7.25rem;
+    margin: 2rem;
+    margin-left: 2.5rem;
+    padding: 0.75rem;
+    border: 1px solid var(--brand-color-1);
+}
+
+.depName {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 24px;
+}
+
+.depDescription {
+    font-style: normal;
+    font-weight: 100;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.companyName {
+    font-style: normal;
+    font-weight: 100;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.divButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.editDep {
+    width: 27.5px;
+    height: 27.5px;
+    cursor: pointer;
+}
+
+.viewDep {
+    width: 32px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.deleteDep {
+    width: 22.5px;
+    height: 25.5px;
+    cursor: pointer;
+}
+
+.usersSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 35vh;
+    gap: 0.25rem;
+}
+
+.usersList {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 450px;
+    max-height: 100%;
+    flex-wrap: wrap;
+    overflow: auto;
+    background: #F8F8F8;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
+}
+
+.usersListTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    height: 3.25rem;
+}
+
+.usersListTitle>h1 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    margin: 1rem;
+}
+
+.cardUser {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 22.375rem;
+    height: 7.25rem;
+    margin: 2rem;
+    margin-left: 2.5rem;
+    padding: 0.75rem;
+    border: 1px solid var(--brand-color-1);
+}
+
+.userName {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 24px;
+}
+
+.userCompanyName {
+    font-style: normal;
+    font-weight: 100;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.divButtonsUser {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.editUser {
+    width: 27.5px;
+    height: 27.5px;
+    cursor: pointer;
+}
+
+.deleteUser {
+    width: 22.5px;
+    height: 25.5px;
+    cursor: pointer;
+}
+
+.divInfos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}

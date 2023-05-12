@@ -1,0 +1,114 @@
+body {
+    gap: 0;
+    overflow: hidden;
+}
+
+.divButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    width: 50%;
+    height: 100%;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    Width: 142px;
+    Height: 48px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    background-color: var(--color-white);
+    border: 1px solid var(--brand-color-1);
+    color: var(--brand-color-1);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--brand-color-1);
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+}
+
+.mainContainer {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.mainImage {
+    width: 100%;
+    height: 100%;
+}
+
+.formLogin {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-white);
+    position: absolute;
+    justify-content: space-between;
+    left: 35%;
+    top: 15%;
+    width: 27.625rem;
+    height: 23.5625rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    gap: 1.25rem;
+}
+
+.formInputsDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 65%;
+}
+
+.formTitle {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 2.5rem;
+    line-height: 3.75rem;
+}
+
+.formText {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
+}
+
+input {
+    width: 95%;
+    height: 3.25rem;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.5);
+    padding-left: 1.25rem;
+}
+
+.formButtonsDiv {
+    display: flex;
+    flex-direction: column;
+    height: 35%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.formButton {
+    width: 100%;
+}

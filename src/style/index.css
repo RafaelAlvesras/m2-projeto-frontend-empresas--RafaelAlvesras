@@ -1,0 +1,154 @@
+.mainContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 60.625rem;
+    height: 83vh;
+    background-color: var(--color-grey-5);
+}
+
+.divMainImg {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.imgOne {
+    height: 100%;
+    width: 90%;
+}
+
+section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 1rem;
+    width: 50%;
+    height: 100%;
+}
+
+select {
+    display: flex;
+    width: 90%;
+    height: 3.25rem;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    text-align: center;
+    background: var(--brand-color-1);
+    color: var(--color-white);
+    border: 0.0625rem solid var(--brand-color-1);
+    -webkit-appearance: none;
+    background: var(--brand-color-1) url('../assets/img/Polygon\ 1.svg') 95% 50% no-repeat;
+}
+
+.listDiv {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    background-color: var(--color-grey-5);
+    box-shadow: 0.25rem 0.25rem 0.75rem 0.25rem rgba(0, 0, 25, .2);
+}
+
+.companiesList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-height: 30rem;
+    overflow: auto;
+    gap: 0.75rem;
+}
+
+.listTitle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 2rem;
+    line-height: 2.4375rem;
+    width: 17.875rem;
+    height: 2.4375rem;
+    margin: 1rem;
+}
+
+.companieCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 1rem;
+    width: 24.3125rem;
+    height: 7.25rem;
+    gap: 1.5rem;
+    border: 1px solid var(--brand-color-1);
+    padding-left: 0.75rem;
+    background-color: var(--color-white);
+}
+
+.companieName {
+    display: flex;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 24px;
+    margin-top: 0.75rem;
+}
+
+.companieSector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    min-Width: 93px;
+    Height: 32px;
+    padding: 0.25rem;
+    border: 1px solid var(--brand-color-1);
+    margin-bottom: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--brand-color-1);
+}
+
+.divButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    width: 50%;
+    height: 100%;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    Width: 142px;
+    Height: 48px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    background-color: var(--color-white);
+    border: 1px solid var(--brand-color-1);
+    color: var(--brand-color-1);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--brand-color-1);
+    border: 1px solid var(--color-white);
+    color: var(--color-white);
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/globalStyles.css">
+    <link rel="stylesheet" href="../style/adminPage.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="../assets/img/logo.png" alt="Kenzie Empresas" class="logo">
+            <div class="divButton">
+                <button class="logoutButtonAdmin">Logout</button>
+            </div>
+        </nav>
+    </header>
+    <main class="mainContainer">
+        <section class="SectionSelectCompanie">
+            <select name="selectCompanie" id="selectCompanie">
+                <option value="" >Selecionar Empresa</option>
+            </select>     
+        </section>
+        <section class="departmentSection">
+            <div class="depTitleAdd">
+                <h1>Departamentos</h1>
+                <button class="createDepButton">+ Criar</button>
+                <dialog class="ModalCreateDepartment">
+                </dialog>
+            </div>
+            <ul class="departmentList">
+            </ul>
+        </section>
+        <section class="usersSection">
+            <div class="usersListTitle">
+                <h1>Usuários cadastrados</h1>
+            </div>
+            <ul class="usersList">
+            </ul>
+        </section>
+    </main>
+    <script type="module" src="../script/adminPage.js"></script>
+</body>
+
+</html>

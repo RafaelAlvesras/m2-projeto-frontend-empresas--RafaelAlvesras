@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/reset.css">
+    <link rel="stylesheet" href="../style/globalStyles.css">
+    <link rel="stylesheet" href="../style/registerPage.css">
+    <title>Kenzie Empresas - Cadastro</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="../assets/img/logo.png" alt="Kenzie Empresas" class="logo">
+            <div class="divButton">
+                <button class="homeButton">Home</button>
+                <button class="loginButton">Login</button>
+            </div>
+        </nav>
+    </header>
+    <main class="mainContainer">
+        <img class="mainImage" src="../assets/img/img2.png" alt="Empresas">
+        <div class="formRegister">
+            <div class="formInputsDiv">
+                <h1 class="formTitle">Cadastre-se</h1>
+                <form>
+                    <input type="text" class="inputRegister" id="inputName" name="name" placeholder="Seu nome">
+                    <input type="email" id="inputEmail" class="inputRegister" name="email" placeholder="Seu e-mail">
+                    <input type="password" id="inputPassword" class="inputRegister"  name="password" placeholder="Sua senha">
+                </form>
+            </div>
+            <div class="formButtonsDiv">
+                <button class="formButton" id="registerButton">Cadastrar</button>
+                <button class="formButton" id="changeHomeButton">Retornar</button>
+            </div>
+        </div>
+    </main>
+    <div class=".toast__container"></div>
+    <script type="module" src="../script/register.js"></script>
+</body>
+
+</html>

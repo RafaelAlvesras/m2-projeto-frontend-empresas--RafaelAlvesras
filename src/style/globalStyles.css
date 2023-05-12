@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Open+Sans:wght@600&family=Roboto:wght@100;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Poppins&family=Roboto:wght@100;400&display=swap');
+
+:root {
+    --brand-color-1: #0000FF;
+    --brand-color-2: #3532FF;
+
+    --color-green-1: #36B37E;
+    --color-red-2: #FF5630;
+    --color-yellow-3: #FFAB00;
+
+    --color-grey-1: #212529;
+    --color-grey-2: #495057;
+    --color-grey-3: #ADB5BD;
+    --color-grey-4: #E9ECEF;
+    --color-grey-5: #F1F3F5;
+
+    --color-white: #fff;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    gap: 1.5rem;
+    background-color: var(--color-grey-5);
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    width: 98%;
+    height: 5rem;
+    background: var(--color-white);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: var(--color-grey-5);
+
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 60.625rem;
+    height: 5rem;
+}
