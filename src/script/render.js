@@ -1,5 +1,4 @@
-import { getAllEmployees, getCategories, getCompanies, getUserData, getDepartment, getAllDepartments, getDepartmentsByCompanies } from "./requests.js"
-
+import { getAllEmployees, getCategories, getCompanies, getUserData, getDepartment, getAllDepartments, getDepartmentsByCompanies, deleteDepartmentRequest, deleteEmployeeRequest } from "./requests.js"
 
 export async function renderCategories() {
     const selectCategories = document.querySelector("#selectCategories")
@@ -159,7 +158,7 @@ export async function renderDepartments() {
         if (selectValue == "") {
             departmentList.innerHTML = ""
 
-            allDepartments.forEach(e => {
+            allDepartments.forEach(async e => {
                 const cardDep = document.createElement("li")
                 const divInfos = document.createElement("div")
                 const depName = document.createElement("h1")
@@ -176,9 +175,13 @@ export async function renderDepartments() {
                 depName.innerText = e.name
                 depDescription.innerText = e.description
                 companyName.innerText = fiteredCompanieById
+
                 viewDep.src = "../assets/img/Vector (4).png"
                 editDep.src = "../assets/img/Vector (5).png"
                 deleteDep.src = "../assets/img/Vector (6).png"
+                deleteDep.id = e.id
+                viewDep.id = e.id
+                editDep.id = e.id
 
                 cardDep.classList.add("cardDep")
                 depName.classList.add("depName")
@@ -193,12 +196,13 @@ export async function renderDepartments() {
                 cardDep.append(divInfos, divButtons)
                 divInfos.append(depName, depDescription, companyName)
                 divButtons.append(viewDep, editDep, deleteDep)
+                await deleteDepartmentModal()
             })
         } else {
             const departmentByCompanie = await getDepartmentsByCompanies(selectValue)
             departmentList.innerHTML = ""
 
-            departmentByCompanie.forEach(e => {
+            departmentByCompanie.forEach(async e => {
                 const cardDep = document.createElement("li")
                 const divInfos = document.createElement("div")
                 const depName = document.createElement("h1")
@@ -215,9 +219,13 @@ export async function renderDepartments() {
                 depName.innerText = e.name
                 depDescription.innerText = e.description
                 companyName.innerText = fiteredCompanieById
+
                 viewDep.src = "../assets/img/Vector (4).png"
                 editDep.src = "../assets/img/Vector (5).png"
                 deleteDep.src = "../assets/img/Vector (6).png"
+                deleteDep.id = e.id
+                viewDep.id = e.id
+                editDep.id = e.id
 
                 cardDep.classList.add("cardDep")
                 depName.classList.add("depName")
@@ -232,6 +240,7 @@ export async function renderDepartments() {
                 cardDep.append(divInfos, divButtons)
                 divInfos.append(depName, depDescription, companyName)
                 divButtons.append(viewDep, editDep, deleteDep)
+                await deleteDepartmentModal()
             })
         }
     })
@@ -243,7 +252,7 @@ export async function renderAllDepartments() {
     const allDepartments = await getAllDepartments()
     const companies = await getCompanies()
 
-    allDepartments.forEach(e => {
+    allDepartments.forEach(async e => {
 
         const cardDep = document.createElement("li")
         const divInfos = document.createElement("div")
@@ -261,9 +270,13 @@ export async function renderAllDepartments() {
         depName.innerText = e.name
         depDescription.innerText = e.description
         companyName.innerText = fiteredCompanieById
+
         viewDep.src = "../assets/img/Vector (4).png"
         editDep.src = "../assets/img/Vector (5).png"
         deleteDep.src = "../assets/img/Vector (6).png"
+        deleteDep.id = e.id
+        viewDep.id = e.id
+        editDep.id = e.id
 
         cardDep.classList.add("cardDep")
         depName.classList.add("depName")
@@ -278,6 +291,7 @@ export async function renderAllDepartments() {
         cardDep.append(divInfos, divButtons)
         divInfos.append(depName, depDescription, companyName)
         divButtons.append(viewDep, editDep, deleteDep)
+        await deleteDepartmentModal()
     })
 }
 
@@ -287,64 +301,148 @@ export async function renderAllEmployees() {
     const departmentList = document.querySelector(".usersList")
 
     allEmployees.forEach(async e => {
-        if(e.company_id == null){
-        const cardUser = document.createElement("li")
-        const divInfos = document.createElement("div")
-        const userName = document.createElement("h1")
-        const userCompanyName = document.createElement("p")
-        const divButtons = document.createElement("div")
-        const editUser = document.createElement("img")
-        const deleteUser = document.createElement("img")
+        if (e.company_id == null) {
+            const cardUser = document.createElement("li")
+            const divInfos = document.createElement("div")
+            const userName = document.createElement("h1")
+            const userCompanyName = document.createElement("p")
+            const divButtons = document.createElement("div")
+            const editUser = document.createElement("img")
+            const deleteUser = document.createElement("img")
 
-        userName.innerText = e.name
-        userCompanyName.innerText = "Desempregado"
-        editUser.src = "../assets/img/Vector (5).png"
-        deleteUser.src = "../assets/img/Vector (6).png"
+            userName.innerText = e.name
+            userCompanyName.innerText = "Desempregado"
+            editUser.src = "../assets/img/Vector (5).png"
+            deleteUser.src = "../assets/img/Vector (6).png"
+            deleteUser.id = e.id
+            editUser.id = e.id
 
-        cardUser.classList.add("cardUser")
-        divInfos.classList.add("divInfos")
-        userName.classList.add("userName")
-        userCompanyName.classList.add("userCompanyName")
-        divButtons.classList.add("divButtonsUser")
-        editUser.classList.add("editUser")
-        deleteUser.classList.add("deleteUser")
+            cardUser.classList.add("cardUser")
+            divInfos.classList.add("divInfos")
+            userName.classList.add("userName")
+            userCompanyName.classList.add("userCompanyName")
+            divButtons.classList.add("divButtonsUser")
+            editUser.classList.add("editUser")
+            deleteUser.classList.add("deleteUser")
 
-        departmentList.appendChild(cardUser)
-        cardUser.append(divInfos, divButtons)
-        divInfos.append(userName, userCompanyName)
-        divButtons.append(editUser, deleteUser)
-    } else {
-        const companies = await getCompanies()
-        const getUserCompany = companies.filter(company => company.id == e.company_id )
-        const userCompany = getUserCompany[0].name
+            departmentList.appendChild(cardUser)
+            cardUser.append(divInfos, divButtons)
+            divInfos.append(userName, userCompanyName)
+            divButtons.append(editUser, deleteUser)
+        } else {
+            const companies = await getCompanies()
+            const getUserCompany = companies.filter(company => company.id == e.company_id)
+            const userCompany = getUserCompany[0].name
 
-        const cardUser = document.createElement("li")
-        const divInfos = document.createElement("div")
-        const userName = document.createElement("h1")
-        const userCompanyName = document.createElement("p")
-        const divButtons = document.createElement("div")
-        const editUser = document.createElement("img")
-        const deleteUser = document.createElement("img")
+            const cardUser = document.createElement("li")
+            const divInfos = document.createElement("div")
+            const userName = document.createElement("h1")
+            const userCompanyName = document.createElement("p")
+            const divButtons = document.createElement("div")
+            const editUser = document.createElement("img")
+            const deleteUser = document.createElement("img")
 
-        userName.innerText = e.name
-        userCompanyName.innerText = userCompany
-        editUser.src = "../assets/img/Vector (5).png"
-        deleteUser.src = "../assets/img/Vector (6).png"
+            userName.innerText = e.name
+            userCompanyName.innerText = userCompany
+            editUser.src = "../assets/img/Vector (5).png"
+            deleteUser.src = "../assets/img/Vector (6).png"
+            deleteUser.id = e.id
+            editUser.id = e.id
 
-        
-        cardUser.classList.add("cardUser")
-        divInfos.classList.add("divInfos")
-        userName.classList.add("userName")
-        userCompanyName.classList.add("userCompanyName")
-        divButtons.classList.add("divButtonsUser")
-        editUser.classList.add("editUser")
-        deleteUser.classList.add("deleteUser")
+            cardUser.classList.add("cardUser")
+            divInfos.classList.add("divInfos")
+            userName.classList.add("userName")
+            userCompanyName.classList.add("userCompanyName")
+            divButtons.classList.add("divButtonsUser")
+            editUser.classList.add("editUser")
+            deleteUser.classList.add("deleteUser")
 
-        departmentList.appendChild(cardUser)
-        cardUser.append(divInfos, divButtons)
-        divInfos.append(userName, userCompanyName)
-        divButtons.append(editUser, deleteUser)
-    }
+            departmentList.appendChild(cardUser)
+            cardUser.append(divInfos, divButtons)
+            divInfos.append(userName, userCompanyName)
+            divButtons.append(editUser, deleteUser)
+        }
 
     })
 }
+
+export async function renderSelectCompaniesModalCreateDep() {
+    const selectCompanies = document.querySelector("#selectCompanieCreateDep")
+    const companiesList = await getCompanies()
+
+    companiesList.forEach(element => {
+        const optionCompanie = document.createElement("option")
+
+        optionCompanie.innerText = element.name
+        optionCompanie.value = element.name
+
+        selectCompanies.appendChild(optionCompanie)
+    });
+}
+
+export async function deleteDepartmentModal() {
+    const buttonDelete = document.querySelectorAll(".deleteDep")
+    const modalDelete = document.querySelector(".ModalDeleteDepartment")
+    const confirmDeleteText = document.querySelector(".confirmDeleteText")
+    const departments = await getAllDepartments()
+
+    buttonDelete.forEach(e => {
+        e.addEventListener("click", () => {
+            const departmentCheck = departments.filter(dep => e.id == dep.id)
+            const departmentName = departmentCheck[0].name
+
+            if (!modalDelete.hasAttribute('open')) {
+                modalDelete.showModal();
+                const closeModalDeleteDep = document.querySelector(".closeModalDeleteDep")
+                closeModalDeleteDep.addEventListener("click", () => {
+                    modalDelete.close()
+                })
+                confirmDeleteText.innerText = `Realmente deseja remover o departamento ${departmentName} e demitir seus funcionários?`
+                const deleteDepartmentButton = document.querySelector(".deleteDepartmentButton")
+                deleteDepartmentButton.addEventListener("click", async () => {
+                    const departmentList = document.querySelector(".departmentList")
+                    await deleteDepartmentRequest(e.id)
+                    modalDelete.close()
+                    departmentList.innerHTML = ""
+                    await renderAllDepartments()
+                    window.location.replace("../pages/adminPage.html")
+                })
+            }
+        })
+    })
+}    
+
+export async function deleteEmployeeModal() {
+    const buttonDelete = document.querySelectorAll(".deleteUser")
+    const modalDelete = document.querySelector(".ModalDeleteEmployee")
+    const confirmDeleteText = document.querySelector(".confirmDeleteEmployeeText")
+    const allEmployees = await getAllEmployees()
+
+    buttonDelete.forEach(e => {
+        e.addEventListener("click", () => {
+            const employeesCheck = allEmployees.filter(empl => empl.id == e.id)
+            console.log(employeesCheck)
+            const employeeName = employeesCheck[0].name
+            const employeeId = employeesCheck[0].id
+
+            if (!modalDelete.hasAttribute('open')) {
+                modalDelete.showModal(); 
+                const closeModalDeleteEmp = document.querySelector(".closeModalDeleteEmp")
+                closeModalDeleteEmp.addEventListener("click", () => {
+                    modalDelete.close()
+                })
+                confirmDeleteText.innerText = `Realmente deseja remover o usuário ${employeeName}`
+                const deleteEmployeeButton = document.querySelector(".deleteEmployeeButton")
+                deleteEmployeeButton.addEventListener("click", async () => {
+                    const usersList = document.querySelector(".usersList")
+                    await deleteEmployeeRequest(employeeId)
+                    modalDelete.close()
+                    usersList.innerHTML = ""
+                    await renderAllEmployees()
+                    window.location.replace("../pages/adminPage.html")
+                })
+            }
+        })
+    })
+}   
+

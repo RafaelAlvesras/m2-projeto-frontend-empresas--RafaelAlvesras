@@ -23,15 +23,13 @@
     <main class="mainContainer">
         <section class="SectionSelectCompanie">
             <select name="selectCompanie" id="selectCompanie">
-                <option value="" >Selecionar Empresa</option>
-            </select>     
+                <option value="">Selecionar Empresa</option>
+            </select>
         </section>
         <section class="departmentSection">
             <div class="depTitleAdd">
                 <h1>Departamentos</h1>
                 <button class="createDepButton">+ Criar</button>
-                <dialog class="ModalCreateDepartment">
-                </dialog>
             </div>
             <ul class="departmentList">
             </ul>
@@ -44,6 +42,96 @@
             </ul>
         </section>
     </main>
+
+    <dialog class="ModalCreateDepartment">
+        <div class="modalCreateDepContainer">
+            <div class="closeButtonDiv">
+                <button class="createDepCloseButton">X</button>
+            </div>
+            <div class="divTitleModalEditDep">
+                <h1 class="titleEditDep">Criar Departamento</h1>
+            </div>
+            <div class="createDepInputs">
+                <input type="text" class="inputCreateDep" id="nameNewDep" name="name"
+                    placeholder="Nome do departamento">
+                <input type="text" class="inputCreateDep" id="descNewDep" name="description" placeholder="Descrição">
+                <select name="company_name" id="selectCompanieCreateDep">
+                    <option class="placeholderSelect" value="">Selecionar Empresa</option>
+                </select>
+            </div>
+            <button id="modalCreateDepButton">Criar</button>
+        </div>
+    </dialog>
+
+    <dialog class="ModalDeleteDepartment">
+        <div class="ModalDeleteContainer">
+            <div class="closeModalDeleteDepDiv">
+                <button class="closeModalDeleteDep">x</button>
+            </div>
+            <div class="deleteText">
+                <h1 class="confirmDeleteText"></h1>
+            </div>
+            <button class="deleteDepartmentButton">Remover</button>
+        </div>
+    </dialog>
+
+    <dialog class="ModalDeleteEmployee">
+        <div class="ModalDeleteEmployeeContainer">
+            <div class="closeModalDeleteDepDiv">
+                <button class="closeModalDeleteEmp">x</button>
+            </div>
+            <div class="deleteText">
+                <h1 class="confirmDeleteEmployeeText"></h1>
+            </div>
+            <button class="deleteEmployeeButton">Remover</button>
+        </div>
+    </dialog>
+
+    <dialog class="ModalEditDep">
+        <div class="editDepContainer">
+            <div class="divButtonEditDep">
+                <button class="closeModalEditDep">x</button>
+            </div>
+            <div class="divTitleEditDep">
+                <h1 class="editDepTitle">editar departamento</h1>
+            </div>
+            <input type="text" class="inputEditDep" id="inputEditDep" placeholder="Valores anteriores da descrição">
+            <button class="editDepButton">Salvar</button>
+        </div>
+    </dialog>
+
+    <dialog class="ModalEditEmployee">
+        <div class="editEmployeeContainer">
+            <div class="divButtonEditEmp">
+                <button class="closeModalEditEmp">x</button>
+            </div>
+            <div class="divTitleEditEmp">
+                <h1 class="editEmpTitle">editar usuário</h1>
+            </div>
+            <input type="text" class="inputEditEmployee" id="inputEditEmployeename" placeholder="Nome">
+            <input type="email" class="inputEditEmployee" id="inputEditEmployeeEmail" placeholder="E-mail">
+            <button class="editEmployeeButton">Salvar</button>
+        </div>
+    </dialog>
+
+    <dialog class="viewDepModal">
+        <button class="closeModalEditEmp">x</button>
+        <div>
+            <h1 class="depNameModalView"></h1>
+            <p></p>
+        </div>
+        <div>
+            <select id="selectHireEmployee">
+                <option value="">Selecionar Usuário</option>
+            </select>
+            <button class="HireEmployee">Contratar</button>
+        </div>
+        <div>
+            <ul class="ulEmployees">
+            </ul>
+        </div>
+    </dialog>
+
     <script type="module" src="../script/adminPage.js"></script>
 </body>
 

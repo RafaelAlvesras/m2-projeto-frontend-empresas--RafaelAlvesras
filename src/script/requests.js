@@ -1,4 +1,4 @@
-import { renderCompaniesByCategories, renderCompanies } from "./render.js"
+import { renderCompaniesByCategories, renderCompanies, renderAllDepartments } from "./render.js"
 // import { toast } from "./toast.js"
 
 const baseUrl = "http://localhost:3333"
@@ -68,7 +68,7 @@ async function createUser(registerBody) {
             }
         })
 
-    console.log(getNewUser)
+    return getNewUser
 }
 
 export async function getRegisterBody() {
@@ -203,7 +203,7 @@ export async function getAllDepartments() {
 }
 
 export async function getDepartmentsByCompanies(selectValue) {
-    
+
 
     const companies = await getCompanies()
     const tokenAuth = localStorage.getItem("token")
@@ -222,7 +222,7 @@ export async function getDepartmentsByCompanies(selectValue) {
             return response
         })
 
-        return getDepartmentByCompanie
+    return getDepartmentByCompanie
 }
 
 export async function getAllEmployees() {
@@ -240,3 +240,181 @@ export async function getAllEmployees() {
 
     return employeesList
 }
+
+export async function createDep(newDepBody) {
+
+    const token = localStorage.getItem("token")
+
+    const newDep = await fetch(`${baseUrl}/departments/create`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(newDepBody)
+    })
+        .then(async (response) => {
+            if (response.ok) {
+                const responseJson = await response.json()
+                window.location.replace("../pages/adminPage.html")
+                return responseJson
+            }
+        })
+
+    return newDep
+}
+
+export async function getNewDepartment() {
+    const modal = document.querySelector(".ModalCreateDepartment")
+    const modalCreateDepButton = document.querySelector("#modalCreateDepButton")
+    let newDepBody = {}
+    const companies = await getCompanies()
+
+
+    modalCreateDepButton.addEventListener("click", async (event) => {
+        event.preventDefault()
+
+        const nameNewDep = document.querySelector("#nameNewDep")
+        const descNewDep = document.querySelector("#descNewDep")
+        const selectCompanieCreateDep = document.querySelector("#selectCompanieCreateDep")
+
+        if (nameNewDep.value == "" || descNewDep.value == "" || selectCompanieCreateDep.value == "") {
+            alert("Por favor preencha os campos necessários")
+        } else {
+
+            const getCompany = companies.filter(e => e.name == selectCompanieCreateDep.value)
+            const companyId = getCompany[0].id
+
+            newDepBody = {
+                name: nameNewDep.value,
+                description: descNewDep.value,
+                company_id: companyId
+            }
+        }
+
+        const token = await createDep(newDepBody)
+
+        token
+        await renderAllDepartments()
+        nameNewDep.value = ""
+        descNewDep.value = ""
+        selectCompanieCreateDep.value = ""
+        modal.close()
+    })
+
+}
+
+export async function deleteDepartmentRequest(department_id) {
+
+    const token = localStorage.getItem("token")
+
+    const deleteDepartment = await fetch(`http://localhost:3333/departments/delete/${department_id}`, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(async response => {
+            const responseJson = await response.json()
+            return responseJson
+        })
+
+    return deleteDepartment
+}
+
+export async function deleteEmployeeRequest(employee_id) {
+
+    const token = localStorage.getItem("token")
+
+    const deleteEmployee = await fetch(`http://localhost:3333/employees/deleteEmployee/${employee_id}`, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(async response => {
+            const responseJson = await response.json()
+            return responseJson
+        })
+
+    return deleteEmployee
+}
+
+export async function editDepartment(bodyEdit, department_id) {
+
+    const token = localStorage.getItem("token")
+
+    const newDescriptionDep = await fetch(`${baseUrl}/departments/update/${department_id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(bodyEdit)
+    })
+        .then(async res => {
+            const responseJson = res.json()
+            return responseJson
+        })
+
+    return newDescriptionDep
+}
+
+export async function editEmployee(bodyEdit, employee_id) {
+
+    const token = localStorage.getItem("token")
+
+    const employeeUpdated = await fetch(`${baseUrl}/employees/updateEmployee/${employee_id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(bodyEdit)
+    })
+        .then(async res => {
+            const responseJson = res.json()
+            return responseJson
+        })
+
+    return employeeUpdated
+}
+
+// export async function hireEmployee(department_id, employee_id) {
+
+//     const token = localStorage.getItem("token")
+
+//     const employeeUpdated = await fetch(`${baseUrl}/employees/hireEmployee/${employee_id}`, {
+//         method: "PATCH",
+//         headers: {
+//             "Content-Type": "application/json",
+//             "Authorization": `Bearer ${token}`
+//         },
+//         body: JSON.stringify(department_id)
+//     })
+//         .then(async res => {
+//             const responseJson = res.json()
+//             return responseJson
+//         })
+
+//     return employeeUpdated
+// }
+
+// export async function getEmployeesOutOfWork() {
+
+//     const token = localStorage.getItem("token")
+
+//     const employeesOutOfWork = await fetch(`${baseUrl}/employees/outOfWork`, {
+//         method: "GET",
+//         headers: {
+//             "Content-Type": "application/json",
+//             "Authorization": `Bearer ${token}`
+//         }
+//     })
+//         .then(async res => {
+//             const responseJson = await res.json()
+//             return responseJson
+//         })
+
+//     return employeesOutOfWork
+// }
