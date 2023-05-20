@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./src/style/reset.css">
     <link rel="stylesheet" href="./src/style/globalStyles.css">
     <link rel="stylesheet" href="./src/style/index.css">
+    <link rel="stylesheet" href="./src/style/toast.css">    
     <title>Kenzie Empresas</title>
 </head>
 
@@ -27,7 +28,7 @@
         </div>
         <section>
             <select name="selectCategories" id="selectCategories" required>
-                <option value="" >Selecionar Setor</option>
+                <option value="">Selecionar Setor</option>
             </select>
             <div class="listDiv">
                 <h1 class="listTitle">Lista de Empresas</h1>
@@ -36,6 +37,11 @@
             </div>
         </section>
     </main>
+
+    <div class="toast__container hidden">
+        <p></p>
+    </div>
+
     <script type="module" src="./src/script/index.js"></script>
 </body>
 

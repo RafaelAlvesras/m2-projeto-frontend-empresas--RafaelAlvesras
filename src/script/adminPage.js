@@ -1,5 +1,5 @@
 import { renderSelectCompanies, renderDepartments, renderAllDepartments, renderAllEmployees, renderSelectCompaniesModalCreateDep, deleteDepartmentModal, deleteEmployeeModal} from "./render.js"
-import {openModalCreateDep, editDepartmentModal,  editEmployeeModal} from "./modal.js"
+import {openModalCreateDep, editDepartmentModal,  editEmployeeModal, viewDepModal} from "./modal.js"
 import {getNewDepartment} from "./requests.js"
 
 function logoutAdmin() {
@@ -23,6 +23,7 @@ await renderSelectCompaniesModalCreateDep()
 await renderAllEmployees()
 await deleteDepartmentModal()
 await deleteEmployeeModal()
+viewDepModal()
 editDepartmentModal()
 editEmployeeModal()
 logoutAdmin()

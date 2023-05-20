@@ -38,7 +38,6 @@
     align-items: center;
     width: 100%;
     max-width: 60.625rem;
-    height: 85vh;
     gap: 1rem;
 }
 
@@ -47,13 +46,15 @@
     justify-content: flex-end;
     width: 100%;
     height: 3.25rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 #selectCompanie {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 3.25rem;
     width: 18rem;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
@@ -69,7 +70,6 @@
     background: var(--brand-color-1) url('../assets/img/Polygon\ 1.svg') 95% 50% no-repeat;
 }
 
-
 .createDepButton {
     display: flex;
     justify-content: center;
@@ -84,6 +84,7 @@
     background: var(--brand-color-1);
     color: var(--color-white);
     border: 0.0625rem solid var(--brand-color-1);
+    margin-top: 7rem;
     cursor: pointer;
 }
 
@@ -97,7 +98,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 18rem;
+    height: 22rem;
     margin-bottom: 2rem;
 }
 
@@ -135,7 +136,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    width: 22.375rem;
+    width: 23.68rem;
     height: 7.25rem;
     margin: 2rem;
     margin-left: 2.5rem;
@@ -193,13 +194,14 @@
     flex-direction: column;
     margin-top: 1rem;
     width: 100%;
-    height: 35vh;
+    height: 22rem;
     gap: 0.25rem;
+    margin-bottom: 1.75rem;
 }
 
 .usersList {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
@@ -215,17 +217,17 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
     height: 3.25rem;
+    padding-bottom: 0.8rem;
 }
 
 .usersListTitle>h1 {
     font-style: normal;
     font-weight: 700;
     font-size: 30px;
-    line-height: 36px;
-    margin: 1rem;
+    line-height: 36px;  
 }
 
 .cardUser {
@@ -233,7 +235,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    width: 22.375rem;
+    width: 23.68rem;
     height: 7.25rem;
     margin: 2rem;
     margin-left: 2.5rem;
@@ -314,6 +316,7 @@
     line-height: 22px;
     text-align: center;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .createDepInputs {
@@ -373,16 +376,6 @@
     justify-content: flex-end;
 }
 
-.createDepCloseButton {
-    display: flex;
-    border: none;
-    cursor: pointer;
-    background-color: #F8F8F8;
-    width: 30px;
-    height: 30px;
-    font-size: 30px;
-}
-
 .ModalEditDep {
     width: 506px;
     height: 300px;
@@ -415,32 +408,24 @@
     line-height: 54px;
 }
 
-.closeModalEditDep {
-    display: flex;
-    border: none;
-    cursor: pointer;
-    background-color: #F8F8F8;
-    width: 30px;
-    height: 30px;
-    font-size: 30px;
-    border: 1px solid #F8F8F8;
-}
-
 .inputEditDep {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
     width: 97%;
     height: 113px;
-    top: 113px;
     background: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.inputEditDep::placeholder {
+    position: absolute;
+    top: 15%;
+    left: 5%;
 }
 
 .editDepButton {
     display: flex;
     position: absolute;
-    background-color: #36B37E;
+    background-color: var(--color-green-1);
     border: none;
     align-items: center;
     justify-content: center;
@@ -453,6 +438,10 @@
     line-height: 22px;
     text-align: center;
     color: #FFFFFF
+}
+
+.editDepButton:hover {
+    background-color: #2a976a;
 }
 
 .ModalEditEmployee {
@@ -474,17 +463,6 @@
     width: 100%;
     justify-content: flex-end;
     align-items: flex-start;
-}
-
-.closeModalEditEmp {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    height: 40px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 54px;
 }
 
 .divTitleEditEmp {
@@ -547,17 +525,10 @@
 
 }
 
-.ModalDeleteEmployeeContainer{
+.ModalDeleteEmployeeContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.closeModalDeleteDepDiv {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
 }
 
 .deleteText {
@@ -606,4 +577,283 @@
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
+}
+
+.viewDepModal {
+    width: 757px;
+    height: 537px;
+    border: none;
+}
+
+.modalViewContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    height: 100%;
+    width: 100%;
+}
+
+.divCloseButtonModalView {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.divDepNameModalView {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 129px;
+    gap: 0.5rem;
+}
+
+.depNameModalView {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 40px;
+}
+
+.depDescriptionModalView {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 22px;
+}
+
+.companyNameModalView {
+    font-style: normal;
+    font-weight: 100;
+    font-size: 20px;
+}
+
+.divSelectModalView {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 55px;
+}
+
+#selectHireEmployee {
+    display: flex;
+    width: 73%;
+    height: 55px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    font-style: normal;
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.HireEmployee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 55px;
+    background-color: var(--color-green-1);
+    border: none;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer
+}
+
+.HireEmployee:hover {
+    background-color: #2a976a;
+}
+
+.divUlEmployeesModalView {
+    display: flex;
+    flex-direction: row;
+    height: 280px;
+    width: 100%;
+}
+
+.ulEmployees {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 190px;
+    width: 100%;
+    gap: 1.25rem;
+    list-style-type: none;
+    overflow-x: auto;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.ulEmployees::-webkit-scrollbar {
+    width: 260px;
+    height: 9px;
+}
+
+.ulEmployees::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Cor do fundo da track */
+}
+
+.ulEmployees::-webkit-scrollbar-thumb {
+    background-color: blue;
+    /* Cor do thumb (alça) */
+}
+
+.ulEmployees::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(19, 19, 216);
+    /* Cor do thumb (alça) ao passar o mouse */
+}
+
+.cardEmployeeModalView {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: 90%;
+    flex: 0 0 280px;
+    gap: 1rem;
+    padding-left: 1.9rem;
+    padding-right: 1.9rem;
+    border-bottom: 1px solid blue;
+    background-color: white;
+}
+
+.cardNoEmployeeModalView {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    text-align: center;
+}
+
+.buttonDismissModalView {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 45px;
+    background-color: var(--color-white);
+    border: 1.5px solid var(--color-red-2);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: var(--color-red-2);
+    cursor: pointer
+}
+
+.buttonDismissModalView:hover {
+    background-color: var(--color-red-2);
+    color: var(--color-white);
+}
+
+.createDepCloseButton {
+    display: flex;
+    border: none;
+    cursor: pointer;
+    background-color: #F8F8F8;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    border: 1px solid #F8F8F8;
+    outline: none;
+}
+
+.closeModalDeleteDep {
+    display: flex;
+    border: none;
+    cursor: pointer;
+    background-color: #F8F8F8;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    border: 1px solid #F8F8F8;
+    outline: none;
+
+}
+
+.closeModalDeleteEmp {
+    display: flex;
+    border: none;
+    cursor: pointer;
+    background-color: #F8F8F8;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    border: 1px solid #F8F8F8;
+    outline: none;
+
+}
+
+#closeModalEditDep {
+    outline: none;
+    display: flex;
+    border: none;
+    cursor: pointer;
+    background-color: #F8F8F8;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    border: 1px solid #F8F8F8;
+}
+
+.closeModalEditEmp {
+    display: flex;
+    border: none;
+    cursor: pointer;
+    background-color: #F8F8F8;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    border: 1px solid #F8F8F8;
+    outline: none;
+
+}
+
+.closeModalView {
+    display: flex;
+    border: none;
+    cursor: pointer;
+    background-color: #F8F8F8;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    border: 1px solid #F8F8F8;
+    outline: none;
+
+}
+
+.closeModalDeleteDiv {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nameEmployeeModalView {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 23px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.companyEmployeeModalView {
+    font-style: normal;
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
 }

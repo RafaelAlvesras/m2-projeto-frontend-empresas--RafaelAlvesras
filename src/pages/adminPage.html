@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="../style/reset.css">
     <link rel="stylesheet" href="../style/globalStyles.css">
     <link rel="stylesheet" href="../style/adminPage.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="../style/toast.css">    
+    <title>Admin Page</title>
 </head>
 
 <body>
@@ -65,7 +66,7 @@
 
     <dialog class="ModalDeleteDepartment">
         <div class="ModalDeleteContainer">
-            <div class="closeModalDeleteDepDiv">
+            <div class="closeModalDeleteDiv">
                 <button class="closeModalDeleteDep">x</button>
             </div>
             <div class="deleteText">
@@ -77,7 +78,7 @@
 
     <dialog class="ModalDeleteEmployee">
         <div class="ModalDeleteEmployeeContainer">
-            <div class="closeModalDeleteDepDiv">
+            <div class="closeModalDeleteDiv">
                 <button class="closeModalDeleteEmp">x</button>
             </div>
             <div class="deleteText">
@@ -90,12 +91,12 @@
     <dialog class="ModalEditDep">
         <div class="editDepContainer">
             <div class="divButtonEditDep">
-                <button class="closeModalEditDep">x</button>
+                <button id="closeModalEditDep">x</button>
             </div>
             <div class="divTitleEditDep">
-                <h1 class="editDepTitle">editar departamento</h1>
+                <h1 class="editDepTitle">Editar Departamento</h1>
             </div>
-            <input type="text" class="inputEditDep" id="inputEditDep" placeholder="Valores anteriores da descrição">
+            <input type="text" class="inputEditDep" id="inputEditDep" placeholder="Digite aqui a nova descrição do departamento">
             <button class="editDepButton">Salvar</button>
         </div>
     </dialog>
@@ -106,7 +107,7 @@
                 <button class="closeModalEditEmp">x</button>
             </div>
             <div class="divTitleEditEmp">
-                <h1 class="editEmpTitle">editar usuário</h1>
+                <h1 class="editEmpTitle">Editar Usuário</h1>
             </div>
             <input type="text" class="inputEditEmployee" id="inputEditEmployeename" placeholder="Nome">
             <input type="email" class="inputEditEmployee" id="inputEditEmployeeEmail" placeholder="E-mail">
@@ -115,22 +116,31 @@
     </dialog>
 
     <dialog class="viewDepModal">
-        <button class="closeModalEditEmp">x</button>
-        <div>
-            <h1 class="depNameModalView"></h1>
-            <p></p>
-        </div>
-        <div>
-            <select id="selectHireEmployee">
-                <option value="">Selecionar Usuário</option>
-            </select>
-            <button class="HireEmployee">Contratar</button>
-        </div>
-        <div>
-            <ul class="ulEmployees">
-            </ul>
+        <div class="modalViewContainer">
+            <div class="divCloseButtonModalView">
+                <button class="closeModalView">x</button>
+            </div>
+            <div class="divDepNameModalView">
+                <h1 class="depNameModalView"></h1>
+                <p class="depDescriptionModalView"></p>
+                <p class="companyNameModalView"></p>
+            </div>
+            <div class="divSelectModalView">
+                <select id="selectHireEmployee">
+                    <option value="">Selecionar Usuário</option>
+                </select>
+                <button class="HireEmployee">Contratar</button>
+            </div>
+            <div class="divUlEmployeesModalView">
+                <ul class="ulEmployees">
+                </ul>
+            </div>
         </div>
     </dialog>
+
+    <div class="toast__container hidden">
+        <p></p>
+    </div>
 
     <script type="module" src="../script/adminPage.js"></script>
 </body>

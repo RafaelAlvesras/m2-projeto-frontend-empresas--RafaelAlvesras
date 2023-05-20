@@ -1,4 +1,6 @@
 import { getAllEmployees, getCategories, getCompanies, getUserData, getDepartment, getAllDepartments, getDepartmentsByCompanies, deleteDepartmentRequest, deleteEmployeeRequest } from "./requests.js"
+import {toast, green} from "./toast.js"
+
 
 export async function renderCategories() {
     const selectCategories = document.querySelector("#selectCategories")
@@ -390,6 +392,7 @@ export async function deleteDepartmentModal() {
         e.addEventListener("click", () => {
             const departmentCheck = departments.filter(dep => e.id == dep.id)
             const departmentName = departmentCheck[0].name
+            const depId = departmentCheck[0].id
 
             if (!modalDelete.hasAttribute('open')) {
                 modalDelete.showModal();
@@ -400,12 +403,12 @@ export async function deleteDepartmentModal() {
                 confirmDeleteText.innerText = `Realmente deseja remover o departamento ${departmentName} e demitir seus funcionários?`
                 const deleteDepartmentButton = document.querySelector(".deleteDepartmentButton")
                 deleteDepartmentButton.addEventListener("click", async () => {
-                    const departmentList = document.querySelector(".departmentList")
-                    await deleteDepartmentRequest(e.id)
-                    modalDelete.close()
-                    departmentList.innerHTML = ""
-                    await renderAllDepartments()
-                    window.location.replace("../pages/adminPage.html")
+                    modalDelete.close()              
+                    await deleteDepartmentRequest(depId)
+                    toast(green, "Departamento deletado com sucesso !")
+                    setTimeout(async () => {
+                        location.reload()
+                    }, 1500)     
                 })
             }
         })
@@ -421,7 +424,6 @@ export async function deleteEmployeeModal() {
     buttonDelete.forEach(e => {
         e.addEventListener("click", () => {
             const employeesCheck = allEmployees.filter(empl => empl.id == e.id)
-            console.log(employeesCheck)
             const employeeName = employeesCheck[0].name
             const employeeId = employeesCheck[0].id
 
@@ -434,15 +436,14 @@ export async function deleteEmployeeModal() {
                 confirmDeleteText.innerText = `Realmente deseja remover o usuário ${employeeName}`
                 const deleteEmployeeButton = document.querySelector(".deleteEmployeeButton")
                 deleteEmployeeButton.addEventListener("click", async () => {
-                    const usersList = document.querySelector(".usersList")
-                    await deleteEmployeeRequest(employeeId)
                     modalDelete.close()
-                    usersList.innerHTML = ""
-                    await renderAllEmployees()
-                    window.location.replace("../pages/adminPage.html")
+                    await deleteEmployeeRequest(employeeId)
+                    toast(green, "Usuário deletado com sucesso !")
+                    setTimeout(async () => {
+                        location.reload()
+                    }, 1500)     
                 })
             }
         })
     })
 }   
-

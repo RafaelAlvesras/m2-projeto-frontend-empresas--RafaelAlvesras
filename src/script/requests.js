@@ -1,9 +1,7 @@
 import { renderCompaniesByCategories, renderCompanies, renderAllDepartments } from "./render.js"
-// import { toast } from "./toast.js"
+import { toast, green, red } from "./toast.js"
 
 const baseUrl = "http://localhost:3333"
-// const green = "#FF5630"
-// const red = "#FF5630"
 
 export async function getCategories() {
 
@@ -60,11 +58,16 @@ async function createUser(registerBody) {
         .then(async (response) => {
             if (response.ok) {
                 const responseJson = await response.json()
-                window.location.replace("../pages/loginPage.html")
+                toast(green, "Usuário cadastrado com sucesso !")
+                setTimeout(() => {
+                    window.location.replace("../pages/loginPage.html")
+                }, 1500)
                 return responseJson
             } else {
-                alert("email ja cadastrado")
-                window.location.replace("../pages/loginPage.html")
+                toast(red, "email ja cadastrado")
+                setTimeout(() => {
+                    window.location.replace("../pages/loginPage.html")
+                }, 1500)
             }
         })
 
@@ -90,7 +93,10 @@ export async function getRegisterBody() {
 
         if (count !== 0) {
             count = 0
-            return alert('Por favor preencha os campos necessários')
+            toast(red, 'Por favor preencha os campos necessários')
+            setTimeout(() => {
+                location.reload()
+            }, 1500)
         } else {
             const token = await createUser(loginBody)
 
@@ -133,14 +139,23 @@ export function checkLogin() {
                         localStorage.clear()
                         JSON.stringify(localStorage.setItem("token", responseJson.authToken))
                         JSON.stringify(localStorage.setItem("isAdm", responseJson.isAdm))
-                        window.location.replace("../pages/adminPage.html")
+                        toast(green, "Login realizado com sucesso !")
+                        setTimeout(() => {
+                            window.location.replace("../pages/adminPage.html")
+                        }, 1500)
                     } else {
                         JSON.stringify(localStorage.setItem("token", responseJson.authToken))
                         JSON.stringify(localStorage.setItem("isAdm", responseJson.isAdm))
-                        window.location.replace("../pages/userPage.html")
+                        toast(green, "Login realizado com sucesso !")
+                        setTimeout(() => {
+                            window.location.replace("../pages/userPage.html")
+                        }, 1500)
                     }
                 } else {
-                    alert("email ou senha inválidos")
+                    toast(red, "Email ou senha inválidos")
+                    setTimeout(() => {
+                        location.reload()
+                    }, 1500)
                 }
             })
 
@@ -256,7 +271,10 @@ export async function createDep(newDepBody) {
         .then(async (response) => {
             if (response.ok) {
                 const responseJson = await response.json()
-                window.location.replace("../pages/adminPage.html")
+                toast(green, "Departamento criado com sucesso !")
+                setTimeout(() => {
+                    window.location.replace("../pages/adminPage.html")
+                }, 1500)
                 return responseJson
             }
         })
@@ -279,7 +297,10 @@ export async function getNewDepartment() {
         const selectCompanieCreateDep = document.querySelector("#selectCompanieCreateDep")
 
         if (nameNewDep.value == "" || descNewDep.value == "" || selectCompanieCreateDep.value == "") {
-            alert("Por favor preencha os campos necessários")
+            toast(red, "Por favor preencha os campos necessários")
+            setTimeout(() => {
+                window.location.reload()
+            }, 1500)
         } else {
 
             const getCompany = companies.filter(e => e.name == selectCompanieCreateDep.value)
@@ -373,48 +394,63 @@ export async function editEmployee(bodyEdit, employee_id) {
         body: JSON.stringify(bodyEdit)
     })
         .then(async res => {
-            const responseJson = res.json()
+            const responseJson = await res.json()
             return responseJson
         })
 
     return employeeUpdated
 }
 
-// export async function hireEmployee(department_id, employee_id) {
+export async function getEmployeesOutOfWork() {
 
-//     const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token")
 
-//     const employeeUpdated = await fetch(`${baseUrl}/employees/hireEmployee/${employee_id}`, {
-//         method: "PATCH",
-//         headers: {
-//             "Content-Type": "application/json",
-//             "Authorization": `Bearer ${token}`
-//         },
-//         body: JSON.stringify(department_id)
-//     })
-//         .then(async res => {
-//             const responseJson = res.json()
-//             return responseJson
-//         })
+    const employeesOutOfWork = await fetch(`${baseUrl}/employees/outOfWork`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(res => res.json())
 
-//     return employeeUpdated
-// }
+    return employeesOutOfWork
+}
 
-// export async function getEmployeesOutOfWork() {
+export async function hireEmployee(body, employee_id) {
 
-//     const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token")
 
-//     const employeesOutOfWork = await fetch(`${baseUrl}/employees/outOfWork`, {
-//         method: "GET",
-//         headers: {
-//             "Content-Type": "application/json",
-//             "Authorization": `Bearer ${token}`
-//         }
-//     })
-//         .then(async res => {
-//             const responseJson = await res.json()
-//             return responseJson
-//         })
+    const employeeHire = await fetch(`${baseUrl}/employees/hireEmployee/${employee_id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(body)
+    })
+        .then(async res => {
+            const responseJson = res.json()
+            return responseJson
+        })
 
-//     return employeesOutOfWork
-// }
+    return employeeHire
+}
+
+export async function dismissEmployee(employee_id) {
+
+    const token = localStorage.getItem("token")
+
+    const employeeDismiss = await fetch(`${baseUrl}/employees/dismissEmployee/${employee_id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    })
+        .then(async res => {
+            const responseJson = res.json()
+            return responseJson
+        })
+
+    return employeeDismiss
+}
